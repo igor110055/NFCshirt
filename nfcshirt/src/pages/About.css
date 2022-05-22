@@ -1,0 +1,25 @@
+#about_header {
+    font-size: 4em;
+}
+
+#about {
+    font-size: 3em;
+    width: 55vw;
+    margin: 0px auto;
+}
+
+.row {
+    display: flex;
+    width: 100vw;
+}
+
+.column {
+    width: 33%;
+    padding: 20px;
+}
+
+.polaroid {
+    background-color: white;
+    border-style: solid;
+    border-width: auto;
+}

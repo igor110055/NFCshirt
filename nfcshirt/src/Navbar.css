@@ -1,0 +1,54 @@
+a {
+    text-decoration: none;
+    font-size: 3em;
+  }
+  
+  .navbar {
+    background-color: #333333;
+    display: flex;
+    /* let's align the items so everything is nice and centered */
+    align-items: center;
+  }
+  
+  /* We want all links in the navbar to be #e7e7e7 */
+  .navbar a {
+    color: #e7e7e7;
+  }
+  
+  .navbar ul {
+   /* Let's reset the margin and padding of the list so it's is flush. */
+    margin: 10px auto;
+    /* Let's remove the bullet points */
+    list-style-type: none;
+    /* display the list flex and align the items centered */
+    display: flex;
+  }
+  
+  .navbar .brand {
+    /*Let's make the anchor display block.
+       This will ensure when we get the full width of the container.
+    */
+    
+    color: #e7e7e7;
+   /* Remove padding from top/bottom and add 24px padding right/left */
+    padding: auto 24px;
+    align-items: center;
+  }
+  
+  .navbar ul li a {
+    color: #e7e7e7;
+    padding: 24px;
+    margin: auto;
+    /*Let's make the anchor display block.
+       This will ensure when we hover, focus, or is active we get the full width and height 
+        of the container.
+    */
+    display: block;
+  }
+  
+  /* When a user hovers, focuses or if the link is active change the background */
+  .navbar ul a:hover,
+  .navbar ul a:focus,
+  .navbar ul .active {
+    background-color: #272727;
+  }
