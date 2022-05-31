@@ -1,9 +1,11 @@
 import React from "react";
 import "./Home.css"
+import Navbar from "../Navbar";
 
 function Home() {
     return(
         <div>
+            <Navbar />
             <p id="home_header">Welcome to NFCshirt!</p>
             <p className="generalFont"> 
                 How do we work?

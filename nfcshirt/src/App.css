@@ -16,17 +16,20 @@
 .generalFont {
   font-size: 4em;
   margin: 0px 100px;
+  font-family: segoe print;
+  stroke: white;
+  text-shadow: 0 0 4px white;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.polaroid {
+  background-clip: padding-box ;
+  border-style: solid;
+  border-width: contain;
+  margin: 0px 20%;
+  padding: 20px;
 }
+

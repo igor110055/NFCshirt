@@ -23,3 +23,11 @@
     border-style: solid;
     border-width: auto;
 }
+
+.about_title {
+    font-size: 2.5em;
+}
+
+.about_font{
+    font-size: 2em;
+}

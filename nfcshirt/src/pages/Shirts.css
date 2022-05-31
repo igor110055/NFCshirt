@@ -1,0 +1,10 @@
+img {
+    object-fit: scale-down;
+}
+
+#shirts_page{
+    background-image: url("../pictures/Bonavita.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+

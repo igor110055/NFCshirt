@@ -2,14 +2,15 @@ import React from "react";
 import "./About.css"
 
 import Pic1 from "../pictures/Picture1.png"
+import Navbar from "../Navbar";
 
 function About() {
     return(
         <div>
-            
-            <p id="about_header">NFC shirts is the brain child of Skye, Kharrim, and Naeem</p>
+            <Navbar />
+            <p id="about_header">NFC shirts is the brain child of Skye, Karrim, and Naeem</p>
 
-            <p id="about">
+            <p id="about" className="generalFont">
                 NFC shirts is a for profit organization looking to build a repetoire of making 
                 T-shirts into NFTs. This can then be integrated into building street credit to 
                 those who provide valueable goods and services <br/><br/>
@@ -23,23 +24,23 @@ function About() {
             <div className="row">
                 <div className="column">
                     <div className="polaroid">
-                        <p>Skye</p>
+                        <p className="about_title">Skye</p>
                         <img src={Pic1} />
-                        <p>A genius Berkly student that initiated the idea</p>
+                        <p className="about_font">A genius Berkly student that initiated the idea</p>
                     </div>
                 </div>
                 <div className="column">
                     <div className="polaroid">
-                        <p>Kharrim</p>
+                        <p className="about_title">Karrim</p>
                         <img src={Pic1} />
-                        <p>the advisor to the project and a visionary</p>
+                        <p className="about_font">the advisor to the project and a visionary</p>
                     </div>
                 </div>
                 <div className="column">
                     <div className="polaroid">
-                        <p>Naeem</p>
+                        <p className="about_title">Naeem</p>
                         <img src={Pic1} />
-                        <p>San Jose State graduate and web developer</p>
+                        <p className="about_font">San Jose State graduate and web developer</p>
                     </div>
                 </div>
             </div>
