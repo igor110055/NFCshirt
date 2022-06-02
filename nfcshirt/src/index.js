@@ -6,11 +6,22 @@ import reportWebVitals from './reportWebVitals';
 
 import {BrowserRouter} from 'react-router-dom'
 
+import { Web3ReactProvider } from '@web3-react/core';
+import { Web3Provider } from "@ethersproject/providers";
+
+function getLibrary(provider) {
+  return new Web3Provider(provider);
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
+  
   <BrowserRouter>
-    <App />
+    <Web3ReactProvider getLibrary={getLibrary}>
+      <App />
+    </Web3ReactProvider>
   </BrowserRouter>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

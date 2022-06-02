@@ -1,0 +1,11 @@
+.profile_wallet{
+    font-size: 2em;
+}
+
+.profile_wallet_hide{
+    display: none;
+}
+
+.profile_wallet:hover+.profile_wallet_hide{
+    display: block;
+}
