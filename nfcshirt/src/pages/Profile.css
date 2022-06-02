@@ -1,3 +1,7 @@
+#profile_shirts{
+    background-image: url('../pictures/Bonavita.png');
+}
+
 .profile_wallet{
     font-size: 2em;
 }
@@ -9,3 +13,13 @@
 .profile_wallet:hover+.profile_wallet_hide{
     display: block;
 }
+
+.profile_wallet_button{
+    height: 300px;
+    width: 300px;
+    font-size: 2em;
+    padding: 20px;
+    margin: 0px 20px;
+    border-radius: 20px;
+    background-color: brown;
+} 

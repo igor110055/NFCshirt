@@ -32,6 +32,7 @@ const Injected = new InjectedConnector({
 function Profile() {
 
     const { activate, deactivate } = useWeb3React();
+    const { active, chainId, account } = useWeb3React();
 
     const generalShirts = () => {
         var value = []
@@ -43,23 +44,27 @@ function Profile() {
 
     }
 
-    var wallet = "0x1234567890ABCDEF"
+    var wallet = String(account)
+
+    const CoinbaseWalletDidMount = () => {
+        
+        activate(CoinbaseWallet);
+    }
 
     return(
-        <div>
+        <div id="profile_shirts">
             <Navbar />
             <p className="generalFont">Welcome to your profile of NFC shirts</p>
-            <p className="generalFont">
+            <button className="profile_wallet_button" onClick={CoinbaseWalletDidMount}>Coinbase Wallet</button>
+            <button className="profile_wallet_button" onClick={() => { activate(WalletConnect) }}>Wallet Connect</button>
+            <button className="profile_wallet_button" onClick={() => { activate(Injected) }}>Metamask</button>
+            <button className="profile_wallet_button" onClick={deactivate}>Disconnect</button>
 
-            <button onClick={() => { activate(CoinbaseWallet) }}>Coinbase Wallet</button>
-            <button onClick={() => { activate(WalletConnect) }}>Wallet Connect</button>
-            <button onClick={() => { activate(Injected) }}>Metamask</button>
-            <button onClick={deactivate}>Disconnect</button>
+            <p className="generalFont">
                 <br/>
 
-                Wallet ID <br/><br/>
-                
-                <a className="profile_wallet" href="https://google.com">wallet ID: {wallet.substring(0,4) + "..." + wallet.substring(wallet.length-3,wallet.length)}</a>
+                Wallet IDs <br/><br/>
+                <p className="profile_wallet" href="https://google.com">wallet ID: {wallet.substring(0,4) + "..." + wallet.substring(wallet.length-3,wallet.length)}</p>
                 <p className="profile_wallet_hide">{wallet}</p>
                 <br/>
                 Your shirts:
