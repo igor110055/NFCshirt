@@ -38,7 +38,7 @@ function Profile() {
         var value = []
         for(var index=0;index<3;index++)
         {
-            value[index] = <div className="polaroid"><img src={genShirt} /></div>
+            value[index] = <div className="polaroid"><img className="profile_shirt" src={genShirt} /></div>
         }
         return value
 
