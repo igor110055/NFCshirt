@@ -39,6 +39,4 @@ urlpatterns = [
     # when you visit the localhost:8000/api
     # you should be routed to the django Rest framework
     path('api/', include(router.urls))
- 
- 
 ]
