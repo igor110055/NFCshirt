@@ -10,4 +10,4 @@ class CoreSerializer(serializers.ModelSerializer):
     # create a meta class
     class Meta:
         model = NFTshirt
-        fields = ('id','NFT', 'name', 'wallet_address', 'owner')
+        fields = ['id','NFT', 'name', 'wallet_address', 'owner']

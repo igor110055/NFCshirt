@@ -31,129 +31,58 @@ const Injected = new InjectedConnector({
 
 function Profile() {
 
+    state = {
+      details: [],
+      NFT: "",
+      Wallet_address: "",
+      owner: "",
+      name: ""
+    };
     const { activate, deactivate } = useWeb3React();
     const { account } = useWeb3React();
 
     componentDidMount = () => {
-        this.refreshList();
-    }
+  
+      let data ;
 
-    refreshList = () => {
-        axios   //Axios to send and receive HTTP requests
-          .get("http://localhost:8000/api/tasks/")
-          .then(res => this.setState({ taskList: res.data }))
-          .catch(err => console.log(err));
-    };
+      axios.get('http://localhost:8000/wel/')
+      .then(res => {
+          data = res.data;
+          this.setState({
+              details : data    
+          });
+      })
+      .catch(err => {})
+  }
 
-    displayCompleted = status => {
-        if (status) {
-          return this.setState({ viewCompleted: true });
-        }
-        return this.setState({ viewCompleted: false });
-    };
-     
-    renderTabList = () => {
-        return (
-          <div className="my-5 tab-list">
-            <span
-              onClick={() => this.displayCompleted(true)}
-              className={this.state.viewCompleted ? "active" : ""}
-            >
-              completed
-                </span>
-            <span
-              onClick={() => this.displayCompleted(false)}
-              className={this.state.viewCompleted ? "" : "active"}
-            >
-              Incompleted
-                </span>
-          </div>
-        );
-    };
+  handleInput = (e) => {
+    this.setState({
+        [e.target.name]: e.target.value,
+    });
+  };
 
-    renderItems = () => {
-        const { viewCompleted } = this.state;
-        const newItems = this.state.taskList.filter(
-          (item) => item.completed === viewCompleted
-        );
-        return newItems.map((item) => (
-          <li
-            key={item.id}
-            className="list-group-item d-flex justify-content-between align-items-center"
-          >
-            <span
-              className={`todo-title mr-2 ${
-                this.state.viewCompleted ? "completed-todo" : ""
-              }`}
-              title={item.description}
-            >
-              {item.name}
-            </span>
-            <span>
-              <button
-                onClick={() => this.editItem(item)}
-                className="btn btn-secondary mr-2"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => this.handleDelete(item)}
-                className="btn btn-danger"
-              >
-                Delete
-              </button>
-            </span>
-          </li>
-        ));
-      };
-    
-    toggle = () => {
-        //add this after modal creation
-        this.setState({ modal: !this.state.modal });
-    };
-    handleSubmit = (item) => {
-        this.toggle();
-        alert("save" + JSON.stringify(item));
-    };
-     
-      // Submit an item
-    handleSubmit = (item) => {
-        this.toggle();
-        if (item.id) {
-          // if old post to edit and submit
-          axios
-            .put(`http://localhost:8000/api/tasks/${item.id}/`, item)
-            .then((res) => this.refreshList());
-          return;
-        }
-        // if new post to submit
-        axios
-          .post("http://localhost:8000/api/tasks/", item)
-          .then((res) => this.refreshList());
-    };
-     
-      // Delete item
-    handleDelete = (item) => {
-        axios
-          .delete(`http://localhost:8000/api/tasks/${item.id}/`)
-          .then((res) => this.refreshList());
-    };
-    handleDelete = (item) => {
-        alert("delete" + JSON.stringify(item));
-    };
-     
-      // Create item
-    createItem = () => { //'NFT', 'name', 'wallet_address', 'owner'
-        const item = { NFT: "", name: "", wallet_address: "", owner: "" };
-        this.setState({ activeItem: item, modal: !this.state.modal });
-    };
-     
-      //Edit item
-    editItem = (item) => {
-        this.setState({ activeItem: item, modal: !this.state.modal });
-    };
+  handleSubmit = (e) => {
+    e.preventDefault();
 
-    const generalShirts = () => {
+    axios
+        .post("http://localhost:8000/wel/", {
+            NFT: this.state.NFT,
+            owner: this.state.owner,
+            wallet_address: this.state.Wallet_address,
+            name: this.state.name
+        })
+        .then((res) => {
+            this.setState({
+              NFT: "",
+              owner: "",
+              wallet_address: "",
+              name: ""
+            });
+        })
+        .catch((err) => {});
+  };
+
+  const generalShirts = () => {
         var value = []
         for(var index=0;index<3;index++)
         {
@@ -179,6 +108,41 @@ function Profile() {
             <button className="profile_wallet_button" onClick={() => { activate(Injected) }}>Metamask</button>
             <button className="profile_wallet_button" onClick={deactivate}>Disconnect</button>
 
+            <form onSubmit={this.handleSubmit}>
+                    <div className="input-group mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text"
+                                  id="basic-addon1">
+                                {" "}
+                                Author{" "}
+                            </span>
+                        </div>
+                        <input type="text" className="form-control" 
+                               placeholder="Name of the Poet/Author"
+                               aria-label="Username"
+                               aria-describedby="basic-addon1"
+                               value={this.state.user} name="user"
+                               onChange={this.handleInput} />
+                    </div>
+  
+                    <div className="input-group mb-3">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text">
+                               Your Quote 
+                            </span>
+                        </div>
+                        <textarea className="form-control " 
+                                  aria-label="With textarea"
+                                  placeholder="Tell us what you think of ....." 
+                                  value={this.state.quote} name="quote" 
+                                  onChange={this.handleInput}>
+                        </textarea>
+                    </div>
+  
+                    <button type="submit" className="btn btn-primary mb-5">
+                        Submit
+                    </button>
+                </form>
             <p className="generalFont">
                 <br/>
 
